@@ -1,0 +1,46 @@
+Architecture of Apache Hadoop YARN :-
+                  In frame work process apache Hadoop is an open-source for two basic important things like  large-scale processing of data-sets on clusters of 
+         commodity hardware and storage. In the runtime envinroment there are mainly five building blocks inside it.
+          The blocks are : 
+                   1) A set of host machines(nodes) are called as cluster.these nodes might be partitioned in racks. It is the hardware part of the 
+         infrastructure.
+         
+                  2) The framework responsible for providing the
+         computational resources (e.g., CPUs, memory, etc.) needed for application executions in  The YARN Infrastructure (Yet Another Resource Negotiator). 
+             The elements that we are consider in yarn are:
+                        a)The Node Manager is called as a slave in the infrastructure.during its starts it indicates himself to Resource Manager,simlarly it also sends the heartbeat to the Resource Manager. for cluster some resources are offered by Each Node Manager. 
+           the  capacity of the resources are based upon  the amount of memory and the number of vcores. At run-time,
+           the utility of capacity is based upon the resource scheduler decision.if the client wants to running a program that time its is used and Container is a fraction of the NM capacity.
+           
+                        b)The Resource Manager is the master. The slaves location are only know by master like Rack Awareness and
+           the resources how many they have. It also have some services, the Resource Scheduler which  makes the decision for how to assign
+           the resources. 
+           
+                 3) For providing permanent software layer implementing the MapReduce paradigm mapreduce framework, distributed storage. This is 
+            used for storing inputs and output (but not intermediate ones).
+
+               
+                  
+                   4)The other alternative storage solutions. For instance, Amazon uses the Simple Storage Service (S3). 
+               
+                   
+         In YARN, there are at least three persons are involves:
+
+                   i) The Job Submitter (the client)
+                  ii) The Resource Manager (the master)
+                 iii) The Node Manager (the slave)
+                 
+              The application startup process is the following:
+
+                      1) A client submits an application to the Resource Manager
+                      2) The Resource Manager allocates a container
+                      3) The Resource Manager contacts the related Node Manager
+                      4) The Node Manager launches the container
+                      5) The Container executes the Application Master 
+
+             For the single application execution Application Master is responsible . It asks for containers to the Resource 
+          Scheduler (Resource Manager) and executes specific programs (e.g., the main of a Java class) on the obtained containers. 
+          The Application Master knows the logic and its a kin of specific framework. 
+              The Resource Manager is a single point of failure in YARN. Using Application Masters, YARN is spreading over the cluster
+          the metadata related to running applications. This reduces the load of the Resource Manager and makes it fast recoverable.
+          
